@@ -25,6 +25,7 @@ graph TD
         style spacer fill:none,stroke:none,color:none
         TE ~~~ spacer[ ] 
         subgraph FTI [Apache/Confluent Flink Translation Engine Internals]
+        TE ~~~ spacer[ ] 
             TE --> Planner[Logical Query Planner]
             Planner --> Optimizer[Cost Optimizer]
             Optimizer --> Runtime[SQL Runtime Mapping]
