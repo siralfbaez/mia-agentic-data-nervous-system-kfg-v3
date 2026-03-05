@@ -39,7 +39,28 @@ graph TD
         Compliance[NIST 800-53] --- CV
     end
 
- ```
+    %% Direct Styles (More reliable for GitHub/GitLab)
+    style SG fill:#add8e6,stroke:#333
+    style WP fill:#add8e6,stroke:#333
+    style CV fill:#add8e6,stroke:#333
+    style VAI fill:#add8e6,stroke:#333
+    style Compliance fill:#add8e6,stroke:#333
+    
+    style Obs fill:#ffcc99,stroke:#333
+    
+    style TE fill:#90ee90,stroke:#333
+    style Planner fill:#90ee90,stroke:#333
+    style Optimizer fill:#90ee90,stroke:#333
+    style Runtime fill:#90ee90,stroke:#333
+    
+    style AA fill:#ff0000,stroke:#333,color:#fff
+    
+    style PS fill:#0000ff,stroke:#333,color:#fff
+    style ADB fill:#0000ff,stroke:#333,color:#fff
+
+    style "Flink Translation Engine Internals" fill:#ffcccb,stroke:#333
+
+```
 ---
 
 # 🚀 Core Components
