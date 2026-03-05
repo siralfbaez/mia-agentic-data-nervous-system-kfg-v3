@@ -24,7 +24,7 @@ graph TD
         linkStyle 3 stroke-width:0px;
         style spacer fill:none,stroke:none,color:none
 
-        subgraph FTI [Flink Translation Engine Internals]
+        subgraph FTI [Apache/Confluent Flink Translation Engine Internals]
             TE --> Planner[Logical Query Planner]
             Planner --> Optimizer[Cost Optimizer]
             Optimizer --> Runtime[SQL Runtime Mapping]
