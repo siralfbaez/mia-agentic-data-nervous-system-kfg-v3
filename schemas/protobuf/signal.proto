@@ -1,0 +1,36 @@
+syntax = "proto3";
+
+package mia.v3;
+
+option go_package = "github.com/siralfbaez/mia-kfg-v3/api/proto;mia_v3";
+
+import "google/protobuf/timestamp.proto";
+import "google/protobuf/struct.proto";
+
+// Signal represents a single event in the Nervous System
+message Signal {
+  string signal_id = 1;
+  string type = 2; // e.g., NIST_AUDIT, TELEMETRY, RESEARCH_HIT
+  string source = 3;
+  
+  google.protobuf.Timestamp timestamp = 4;
+  
+  // The Knowledge Flow Graph payload
+  // We use Struct for flexibility while maintaining Proto structure
+  google.protobuf.Struct payload = 5;
+
+  // Metadata for the Cost Optimizer
+  message Metadata {
+    int32 priority = 1;
+    bool requires_llm_reasoning = 2;
+    string trace_id = 3;
+  }
+  Metadata metadata = 6;
+}
+
+// KFGState represents the processed result stored in AlloyDB
+message KFGState {
+  string node_id = 1;
+  string status = 2;
+  float confidence_score = 3;
+}

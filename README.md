@@ -103,3 +103,10 @@ graph TD
 * **Standards:** NIST 800-53 (Enterprise-grade security controls)
 * **Encryption:** KMS (Key Management Service) for data at rest and in transit
 
+# OPs
+### Run this locally to generate the code:
+```bash
+protoc --go_out=. --go_opt=paths=source_relative \
+    --go-grpc_out=. --go-grpc_opt=paths=source_relative \
+    schemas/protobuf/signal.proto
+```

@@ -6,8 +6,8 @@ import (
 	"fmt"
 
 	"cloud.google.com/go/vertexai/genai"
-	"github.com/siralfbaez/mia-kfg-v3/pkg/observability"
-	"github.com/siralfbaez/mia-kfg-v3/pkg/resilience"
+	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
+	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/resilience"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 )
