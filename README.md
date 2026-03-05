@@ -19,9 +19,11 @@ graph TD
         WP --> CV[Contract Validator]
         CV --> TE[Translation Engine]
         
-        subgraph FTI [Apache Confluent Flink & Translation Engine Internals]
-
-            TE --> Planner[Logical Query Planner]
+        subgraph FTI [Flink Translation Engine Internals]
+            %% Invisible spacer node to force vertical space
+            Spacer[ ] --> Planner[Logical Query Planner]
+            TE --> Spacer
+            
             Planner --> Optimizer[Cost Optimizer]
             Optimizer --> Runtime[SQL Runtime Mapping]
         end
@@ -40,28 +42,25 @@ graph TD
         Compliance[NIST 800-53] --- CV
     end
 
-    %% Styles with Black Font Force (color:#000)
-    style SG fill:#add8e6,stroke:#333,color:#000
-    style WP fill:#add8e6,stroke:#333,color:#000
-    style CV fill:#add8e6,stroke:#333,color:#000
-    style VAI fill:#add8e6,stroke:#333,color:#000
-    style Compliance fill:#add8e6,stroke:#333,color:#000
-    
-    style Obs fill:#ffcc99,stroke:#333,color:#000
-    
-    style TE fill:#90ee90,stroke:#333,color:#000
-    style Planner fill:#90ee90,stroke:#333,color:#000
-    style Optimizer fill:#90ee90,stroke:#333,color:#000
-    style Runtime fill:#90ee90,stroke:#333,color:#000
-    
-    %% Kept white font for high-contrast nodes
+    %% Styles
+    style SG,WP,CV,VAI,Compliance,Obs,TE,Planner,Optimizer,Runtime,FTI fill:#f9f9f9,stroke:#333,color:#000
+    style SG fill:#add8e6
+    style WP fill:#add8e6
+    style CV fill:#add8e6
+    style VAI fill:#add8e6
+    style Compliance fill:#add8e6
+    style Obs fill:#ffcc99
+    style TE fill:#90ee90
+    style Planner fill:#90ee90
+    style Optimizer fill:#90ee90
+    style Runtime fill:#90ee90
     style AA fill:#ff0000,stroke:#333,color:#fff
     style PS fill:#0000ff,stroke:#333,color:#fff
     style ADB fill:#0000ff,stroke:#333,color:#fff
+    style FTI fill:#ffcccb,stroke:#333
 
-    %% Subgraph Styling
-    style FTI fill:#ffcccb,stroke:#333,color:#000
-    
+    %% Hide the spacer node visually
+    style Spacer fill:transparent,stroke:none,color:transparent
 ```
 ---
 
