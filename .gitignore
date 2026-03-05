@@ -1,0 +1,31 @@
+# --- Go Binaries & Tooling ---
+bin/
+main
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+vendor/
+go.work
+
+# --- GCP / Terraform ---
+.terraform/
+*.tfstate
+*.tfstate.backup
+.terraform.lock.hcl
+*.tfvars
+*.tfvars.json
+auth-key.json
+
+# --- Secrets & Environment ---
+.env
+.env.local
+.env.*.local
+
+# --- IDEs & OS ---
+.vscode/
+.idea/
+.DS_Store

@@ -1,0 +1,50 @@
+services:
+  # Mock Pub/Sub for local event streaming
+  pubsub-emulator:
+    image: gcr.io/google.com/cloudsdktool/cloud-sdk:emulators
+    ports:
+      - "8085:8085"
+    command: gcloud beta emulators pubsub start --host-port=0.0.0.0:8085
+
+  # The Entry Point for Signals
+  signal-gateway:
+    build: 
+      context: .
+      dockerfile: services/signal-gateway/Dockerfile
+    environment:
+      - PUBSUB_EMULATOR_HOST=pubsub-emulator:8085
+    depends_on:
+      - pubsub-emulator
+
+  # The Flink-like Logic Processor
+  translation-engine:
+    build:
+      context: .
+      dockerfile: services/translation-engine/Dockerfile
+    environment:
+      - OBSERVABILITY_ENDPOINT=otel-collector:4317
+    depends_on:
+      - signal-gateway
+
+  # Knowledge State Store (Postgres/AlloyDB compatible)
+  knowledge-db:
+    image: postgres:15
+    environment:
+      POSTGRES_DB: kfg_v3_state
+      POSTGRES_PASSWORD: password
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./database/migrations:/docker-entrypoint-initdb.d
+
+  # Observability Stack
+  prometheus:
+    image: prom/prometheus
+    volumes:
+      - ./pkg/observability/prometheus.yml:/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+
+networks:
+  default:
+    name: mia-nervous-system-net
