@@ -39,27 +39,27 @@ graph TD
         Compliance[NIST 800-53] --- CV
     end
 
-    %% Optimized Styling Block
-    style SG fill:#add8e6,stroke:#333
-    style WP fill:#add8e6,stroke:#333
-    style CV fill:#add8e6,stroke:#333
-    style VAI fill:#add8e6,stroke:#333
-    style Compliance fill:#add8e6,stroke:#333
+    %% Styles with Black Font Force (color:#000)
+    style SG fill:#add8e6,stroke:#333,color:#000
+    style WP fill:#add8e6,stroke:#333,color:#000
+    style CV fill:#add8e6,stroke:#333,color:#000
+    style VAI fill:#add8e6,stroke:#333,color:#000
+    style Compliance fill:#add8e6,stroke:#333,color:#000
     
-    style Obs fill:#ffcc99,stroke:#333
+    style Obs fill:#ffcc99,stroke:#333,color:#000
     
-    style TE fill:#90ee90,stroke:#333
-    style Planner fill:#90ee90,stroke:#333
-    style Optimizer fill:#90ee90,stroke:#333
-    style Runtime fill:#90ee90,stroke:#333
+    style TE fill:#90ee90,stroke:#333,color:#000
+    style Planner fill:#90ee90,stroke:#333,color:#000
+    style Optimizer fill:#90ee90,stroke:#333,color:#000
+    style Runtime fill:#90ee90,stroke:#333,color:#000
     
+    %% Kept white font for high-contrast nodes
     style AA fill:#ff0000,stroke:#333,color:#fff
-    
     style PS fill:#0000ff,stroke:#333,color:#fff
     style ADB fill:#0000ff,stroke:#333,color:#fff
 
-    %% This was the line causing the error - now using ID 'FTI'
-    style FTI fill:#ffcccb,stroke:#333
+    %% Subgraph Styling
+    style FTI fill:#ffcccb,stroke:#333,color:#000
     
 ```
 ---
