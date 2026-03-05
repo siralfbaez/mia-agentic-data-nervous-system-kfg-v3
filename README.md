@@ -19,7 +19,7 @@ graph TD
         WP --> CV[Contract Validator]
         CV --> TE[Translation Engine]
         
-        subgraph FTI [Flink Translation Engine Internals]
+        subgraph FTI [Apache Confluent Flink Translation Engine Internals]
             TE --> Planner[Logical Query Planner]
             Planner --> Optimizer[Cost Optimizer]
             Optimizer --> Runtime[SQL Runtime Mapping]
