@@ -19,7 +19,7 @@ graph TD
         WP --> CV[Contract Validator]
         CV --> TE[Translation Engine]
         
-        subgraph "Translation Engine Internals"
+        subgraph "Flink Translation Engine Internals"
             TE --> Planner[Logical Query Planner]
             Planner --> Optimizer[Cost Optimizer]
             Optimizer --> Runtime[SQL Runtime Mapping]
@@ -33,7 +33,7 @@ graph TD
     end
 
     subgraph "Observability & Governance"
-        Obs[pkg/observability] -.-> SG
+        Obs[Observability] -.-> SG
         Obs -.-> TE
         Obs -.-> AA
         Compliance[NIST 800-53] --- CV
