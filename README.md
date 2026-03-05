@@ -20,14 +20,11 @@ graph TD
         CV --> TE[Translation Engine]
         
         %% Invisible spacer to push the subgraph down
-        TE ~~~ spacer[ ]
+            TE ~~~ spacer[ ]
         linkStyle 3 stroke-width:0px;
         style spacer fill:none,stroke:none,color:none
-        TE ~~~ spacer[ ] 
-        subgraph FTI [Apache/Confluent Flink Translation Engine Internals]
-        TE ~~~ spacer[ ] 
-        TE ~~~ spacer[ ] 
-        TE ~~~ spacer[ ] 
+            TE ~~~ spacer[ ] 
+        subgraph FTI [Flink Translation Engine Internals]
             TE --> Planner[Logical Query Planner]
             Planner --> Optimizer[Cost Optimizer]
             Optimizer --> Runtime[SQL Runtime Mapping]
