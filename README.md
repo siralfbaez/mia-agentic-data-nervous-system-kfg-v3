@@ -10,36 +10,36 @@ A production-grade reference architecture for **Autonomous Agentic Workflows** p
 
 ```mermaid
 graph TD
-    subgraph "Signal Ingestion"
-        SG[Signal Gateway] --> |Protobuf/Avro| PS[(GCP Pub/Sub)]
+    subgraph SI [Signal Ingestion]
+        SG[Signal Gateway] --> PS[(GCP Pub/Sub)]
     end
 
-    subgraph "Nervous System (Stream Processing)"
+    subgraph NS [Nervous System - Stream Processing]
         PS --> WP[Worker PubSub]
         WP --> CV[Contract Validator]
         CV --> TE[Translation Engine]
         
-        subgraph "Flink Translation Engine Internals"
+        subgraph FTI [Flink Translation Engine Internals]
             TE --> Planner[Logical Query Planner]
             Planner --> Optimizer[Cost Optimizer]
             Optimizer --> Runtime[SQL Runtime Mapping]
         end
     end
 
-    subgraph "Agentic Layer (Vertex AI)"
+    subgraph AL [Agentic Layer - Vertex AI]
         Runtime --> AA[AI Agent]
         AA --> VAI[Vertex AI / Gemini]
         AA --> ADB[(AlloyDB / Vector Store)]
     end
 
-    subgraph "Observability & Governance"
+    subgraph OG [Observability & Governance]
         Obs[Observability] -.-> SG
         Obs -.-> TE
         Obs -.-> AA
         Compliance[NIST 800-53] --- CV
     end
 
-    %% Direct Styles (More reliable for GitHub/GitLab)
+    %% Optimized Styling Block
     style SG fill:#add8e6,stroke:#333
     style WP fill:#add8e6,stroke:#333
     style CV fill:#add8e6,stroke:#333
@@ -58,8 +58,9 @@ graph TD
     style PS fill:#0000ff,stroke:#333,color:#fff
     style ADB fill:#0000ff,stroke:#333,color:#fff
 
-    style "Flink Translation Engine Internals" fill:#ffcccb,stroke:#333
-
+    %% This was the line causing the error - now using ID 'FTI'
+    style FTI fill:#ffcccb,stroke:#333
+    
 ```
 ---
 
