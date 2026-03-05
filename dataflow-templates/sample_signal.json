@@ -1,0 +1,13 @@
+{
+  "type": "NIST_COMPLIANCE_AUDIT",
+  "payload": {
+    "node_id": "e4b2-4f31-89a1",
+    "observed_event": "UNAUTHORIZED_VPC_EGRESS",
+    "severity": "HIGH",
+    "timestamp": "2026-03-05T14:30:00Z",
+    "metadata": {
+      "source_ip": "10.0.0.5",
+      "destination_country": "UNKNOWN"
+    }
+  }
+}

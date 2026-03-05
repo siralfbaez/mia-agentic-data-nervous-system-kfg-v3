@@ -6,8 +6,6 @@ A production-grade reference architecture for **Autonomous Agentic Workflows** p
 --- 
 ## 🏗 Architecture Diagram
 
-
-
 ```mermaid
 graph TD
     subgraph SI [Signal Ingestion]
@@ -24,7 +22,7 @@ graph TD
         linkStyle 3 stroke-width:0px;
         style spacer fill:none,stroke:none,color:none
             TE ~~~ spacer[ ] 
-        subgraph FTI [Flink Translation Engine Internals]
+        subgraph FTI [Flink Translation Eng Internals]
             TE --> Planner[Logical Query Planner]
             Planner --> Optimizer[Cost Optimizer]
             Optimizer --> Runtime[SQL Runtime Mapping]

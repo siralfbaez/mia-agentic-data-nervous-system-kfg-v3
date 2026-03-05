@@ -1,0 +1,33 @@
+name: "KFG-v3 Production Deploy"
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+jobs:
+  terraform:
+    name: "Infrastructure (Terraform)"
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: HashiCorp Setup
+        uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Plan
+        run: terraform plan -input=false
+        working-directory: ./terraform/environments/prod
+
+  build-and-push:
+    name: "Build Services"
+    needs: terraform
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        service: [signal-gateway, ai-agent, worker-pubsub]
+    steps:
+      - name: Build Docker Image
+        run: |
+          docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ matrix.service }}:${{ github.sha }} ./services/${{ matrix.service }}
