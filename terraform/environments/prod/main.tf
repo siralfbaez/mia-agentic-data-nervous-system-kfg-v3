@@ -1,3 +1,15 @@
+provider "google" {
+  project = var.project_id
+  region  = var.region
+}
+
+# Optional: Add the beta provider if you use AlloyDB features
+# that require it (GCP often keeps AlloyDB in beta tags)
+provider "google-beta" {
+  project = var.project_id
+  region  = var.region
+}
+
 module "vpc" {
   source     = "../../modules/vpc-network"
   region     = var.region
