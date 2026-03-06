@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 
-	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
 	"go.opentelemetry.io/otel"
 )
 

@@ -1,11 +1,9 @@
 package handler
 
 import (
-	"context"
 	"net/http"
 	"time"
 
-	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 	"go.opentelemetry.io/otel/trace"
@@ -43,7 +41,7 @@ func (h *IngestHandler) ServeHTTP(w http.ResponseWriter, r *http.Request) {
 	// 4. Async Dispatch to Pub/Sub
 	start := time.Now()
 	err := h.publishToStream(ctx, r.Body)
-	
+
 	// 5. Metric: Latency for Stream Write
 	latency, _ := meter.Float64Histogram("gateway.publish_latency_ms")
 	latency.Record(ctx, float64(time.Since(start).Milliseconds()))

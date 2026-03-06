@@ -4,10 +4,14 @@ go 1.25.5
 
 require (
 	cloud.google.com/go/vertexai v0.15.0
-	github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability v0.0.0-20260306012717-c432e285122d
+	github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability v0.0.0
 	github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/resilience v0.0.0-20260306012717-c432e285122d
 	go.opentelemetry.io/otel v1.41.0
 )
+
+replace github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability => ../../pkg/observability
+
+replace github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/resilience => ../../pkg/resilience
 
 require (
 	cloud.google.com/go v0.121.2 // indirect

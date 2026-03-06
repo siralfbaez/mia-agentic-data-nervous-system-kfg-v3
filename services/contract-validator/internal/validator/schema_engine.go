@@ -5,7 +5,6 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 )
@@ -48,7 +47,7 @@ func (v *Validator) ValidateSignal(ctx context.Context, signalType string, paylo
 		// Metric: Track failures for alerting (SRE mindset)
 		failCounter, _ := meter.Int64Counter("validator.failures_total")
 		failCounter.Add(ctx, 1)
-		
+
 		span.RecordError(ErrSchemaMismatch)
 		return fmt.Errorf("%w: type %s", ErrSchemaMismatch, signalType)
 	}
@@ -59,5 +58,5 @@ func (v *Validator) ValidateSignal(ctx context.Context, signalType string, paylo
 func (v *Validator) performStrictCheck(st string, p []byte) bool {
 	// Placeholder for actual Protobuf/Avro decoding logic
 	// In production, this would use the Confluent Schema Registry Client
-	return true 
+	return true
 }

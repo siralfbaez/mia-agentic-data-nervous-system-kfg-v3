@@ -4,10 +4,6 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
-
-	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
-	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/resilience"
-	"go.opentelemetry.io/otel"
 )
 
 type Signal struct {

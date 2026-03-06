@@ -1,4 +1,6 @@
 import (
+	"context"
+
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 )
@@ -22,6 +24,6 @@ func (s *StreamOptimizer) SelectBestPlan(ctx context.Context, plans []Plan) (Pla
 		attribute.String("plan.id", bestPlan.ID),
 		attribute.Float64("plan.cost", bestPlan.TotalCost),
 	)
-	
+
 	return bestPlan, nil
 }

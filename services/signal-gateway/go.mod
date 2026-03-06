@@ -4,10 +4,13 @@ go 1.25.5
 
 require (
 	github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability v0.0.0-20260306012717-c432e285122d
-	github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/resilience v0.0.0-20260306012717-c432e285122d
 	go.opentelemetry.io/otel v1.41.0
 	go.opentelemetry.io/otel/trace v1.41.0
 )
+
+replace github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability => ../../pkg/observability
+
+replace github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/resilience => ../../pkg/resilience
 
 require (
 	github.com/beorn7/perks v1.0.1 // indirect
@@ -23,7 +26,6 @@ require (
 	github.com/prometheus/common v0.67.5 // indirect
 	github.com/prometheus/otlptranslator v1.0.0 // indirect
 	github.com/prometheus/procfs v0.19.2 // indirect
-	github.com/sony/gobreaker v1.0.0 // indirect
 	go.opentelemetry.io/auto/sdk v1.2.1 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace v1.41.0 // indirect
 	go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc v1.41.0 // indirect

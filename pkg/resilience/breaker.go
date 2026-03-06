@@ -4,9 +4,8 @@ import (
 	"context"
 	"errors"
 	"time"
+
 	"github.com/sony/gobreaker" // A standard Staff-level choice for Go
-	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
-	"go.opentelemetry.io/otel/attribute"
 )
 
 var (
@@ -38,7 +37,7 @@ func NewResiliencePolicy(name string) *Policy {
 // Execute wraps a function call with circuit breaking logic
 func (p *Policy) Execute(ctx context.Context, operation func() (interface{}, error)) (interface{}, error) {
 	result, err := p.cb.Execute(operation)
-	
+
 	if err != nil {
 		if err == gobreaker.ErrOpenState {
 			return nil, ErrCircuitOpen

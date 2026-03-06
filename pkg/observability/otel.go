@@ -3,7 +3,7 @@ package observability
 import (
 	"context"
 	"fmt"
-	"time"
+
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/exporters/otlp/otlptrace/otlptracegrpc"
 	"go.opentelemetry.io/otel/exporters/prometheus"
@@ -56,7 +56,9 @@ func InitTelemetry(ctx context.Context, serviceName string) (ShutdownFunc, error
 	return func(ctx context.Context) error {
 		err1 := tracerProvider.Shutdown(ctx)
 		err2 := meterProvider.Shutdown(ctx)
-		if err1 != nil { return err1 }
+		if err1 != nil {
+			return err1
+		}
 		return err2
 	}, nil
 }
