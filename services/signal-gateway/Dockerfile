@@ -1,9 +1,8 @@
 # Stage 1: Build
-FROM golang:1.22-alpine AS builder
+FROM golang:1.25-alpine AS builder
 
 # This is passed in by GitHub Actions (e.g., ai-agent)
 ARG SERVICE_NAME
-
 WORKDIR /app
 
 # 1. Copy the shared internal packages first
@@ -13,11 +12,15 @@ COPY pkg/ ./pkg/
 COPY services/${SERVICE_NAME}/ ./services/${SERVICE_NAME}/
 
 # 3. Build the binary from WITHIN the service directory
-# This ensures go.mod is found correctly
 WORKDIR /app/services/${SERVICE_NAME}
-RUN GOWORK=off go build -o /main ./cmd/main.go
+# Check if cmd/main.go exists; if not, build from the root of the service
+RUN if [ -f "./cmd/main.go" ]; then \
+        GOWORK=off go build -o /main ./cmd/main.go; \
+    else \
+        GOWORK=off go build -o /main ./main.go; \
+    fi
 
-# Stage 2: Final Runtime (keeps the image small)
+# Stage: Final Runtime (keeps the image small)
 FROM alpine:latest
 WORKDIR /root/
 RUN apk --no-cache add ca-certificates
