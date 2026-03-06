@@ -1,24 +1,19 @@
-resource "google_alloydb_cluster" "main" {
-  cluster_id = var.cluster_id
+resource "google_alloydb_cluster" "default" {
+  cluster_id = var.cluster_id # Using the variable here
   location   = var.region
-  network    = var.vpc_id
-
-  initial_user {
-    password = var.db_password
-    user     = "admin"
+  project    = var.project_id
+  network_config {
+    network = var.vpc_id # Using the variable here
   }
 }
 
 resource "google_alloydb_instance" "primary" {
-  cluster       = google_alloydb_cluster.main.name
+  cluster       = google_alloydb_cluster.default.name
   instance_id   = "${var.cluster_id}-primary"
   instance_type = "PRIMARY"
 
+  # Staff Tip: Use a small tier for Dev/Prod unless high-load is expected
   machine_config {
-    cpu_count = 4 # High performance for stream-to-db mapping
+    cpu_count = 2
   }
-}
-
-output "cluster_ip" {
-  value = google_alloydb_cluster.main.ip_address
 }
