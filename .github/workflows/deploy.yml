@@ -13,7 +13,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 1. Official GCP Auth (Handles the credentials file for Terraform automatically)
       - id: 'auth'
         name: 'Authenticate to Google Cloud'
         uses: 'google-github-actions/auth@v2'
@@ -45,7 +44,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      # 2. Auth again for Docker (to push to GCR)
       - id: 'auth-docker'
         uses: 'google-github-actions/auth@v2'
         with:
@@ -57,8 +55,10 @@ jobs:
       - name: 'Docker Auth'
         run: gcloud auth configure-docker --quiet
 
-      # 3. FIX: Build from ROOT so Docker can see the /pkg directory
-      - name: Build Docker Image
+      - name: Build and Push Docker Image
         run: |
           docker build -t gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ matrix.service }}:${{ github.sha }} \
+          --build-arg SERVICE_NAME=${{ matrix.service }} \
           -f services/${{ matrix.service }}/Dockerfile .
+          
+          docker push gcr.io/${{ secrets.GCP_PROJECT_ID }}/${{ matrix.service }}:${{ github.sha }}
