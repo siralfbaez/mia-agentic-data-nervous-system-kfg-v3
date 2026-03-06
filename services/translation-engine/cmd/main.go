@@ -5,8 +5,8 @@ import (
 	"log"
 	"net/http"
 
-	"github.com/siralfbaez/mia-kfg-v3/pkg/observability"
-	"github.com/siralfbaez/mia-kfg-v3/services/translation-engine/internal/mapping/cost_optimizer"
+	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
+	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/services/translation-engine/internal/mapping/cost_optimizer"
 )
 
 func main() {

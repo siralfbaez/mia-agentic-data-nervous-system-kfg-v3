@@ -7,8 +7,8 @@ import (
 	"os"
 	"os/signal"
 
-	"github.com/siralfbaez/mia-kfg-v3/pkg/observability"
-	"github.com/siralfbaez/mia-kfg-v3/services/signal-gateway/internal/handler"
+	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
+	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/services/signal-gateway/internal/handler"
 )
 
 func main() {

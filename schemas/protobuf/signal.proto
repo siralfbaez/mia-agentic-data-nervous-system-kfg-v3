@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package mia.v3;
 
-option go_package = "github.com/siralfbaez/mia-kfg-v3/api/proto;mia_v3";
+option go_package = "github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/api/proto;mia_v3";
 
 import "google/protobuf/timestamp.proto";
 import "google/protobuf/struct.proto";

@@ -5,7 +5,7 @@ import (
 	"errors"
 	"fmt"
 
-	"github.com/siralfbaez/mia-kfg-v3/pkg/observability"
+	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
 	"go.opentelemetry.io/otel"
 	"go.opentelemetry.io/otel/attribute"
 )

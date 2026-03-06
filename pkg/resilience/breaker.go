@@ -6,7 +6,7 @@ import (
 	"time"
 
 	"github.com/sony/gobreaker" // A standard Staff-level choice for Go
-	"github.com/siralfbaez/mia-kfg-v3/pkg/observability"
+	"github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability"
 	"go.opentelemetry.io/otel/attribute"
 )
 

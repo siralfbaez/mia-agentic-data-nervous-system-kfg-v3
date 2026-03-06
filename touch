@@ -1,0 +1,31 @@
+# --- Stage 1: Build ---
+FROM golang:1.22-alpine AS builder
+
+# Install build dependencies
+RUN apk add --no-cache git
+
+WORKDIR /app
+
+# Copy the workspace and local packages
+# Staff Tip: We copy the root go.work to resolve local pkg/ dependencies
+COPY go.work go.work.sum ./
+COPY pkg/ ./pkg/
+COPY services/ai-agent/ ./services/ai-agent/
+
+# Build the binary
+WORKDIR /app/services/ai-agent
+RUN go mod download
+RUN CGO_ENABLED=0 GOOS=linux go build -o /ai-agent cmd/main.go
+
+# --- Stage 2: Final (The Distroless Skull) ---
+# We use 'alpine' or 'distroless' for a tiny footprint
+FROM alpine:3.18
+RUN apk add --no-cache ca-certificates
+
+WORKDIR /
+
+# Copy only the compiled binary from the builder
+COPY --from=builder /ai-agent /ai-agent
+
+# Set the entrypoint
+ENTRYPOINT ["/ai-agent"]

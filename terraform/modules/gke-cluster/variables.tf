@@ -5,7 +5,7 @@ variable "project_id" {
 
 variable "cluster_name" {
   type    = string
-  default = "mia-kfg-v3-cluster"
+  default = "mia-agentic-data-nervous-system-cluster"
 }
 
 variable "region" {

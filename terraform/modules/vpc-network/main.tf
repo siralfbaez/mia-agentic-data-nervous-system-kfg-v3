@@ -1,5 +1,5 @@
 resource "google_compute_network" "main" {
-  name                    = "mia-kfg-v3-vpc"
+  name                    = "mia-agentic-data-nervous-system-vpc"
   auto_create_subnetworks = false
 }
 

@@ -1,3 +1,9 @@
-variable "project_id" { type = string }
-variable "region"     { type = string }
-variable "key_ring_name" { type = string; default = "mia-kfg-v3-keyring" }
+variable "key_ring_name" {
+  type    = string
+  default = "mia-agentic-data-nervous-system-keyring"
+}
+
+variable "topic_name" {
+  type    = string
+  default = "mia-signals-v3"
+}
