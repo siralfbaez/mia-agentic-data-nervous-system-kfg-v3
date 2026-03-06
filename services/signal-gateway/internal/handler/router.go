@@ -12,7 +12,7 @@ type Signal struct {
 }
 
 func (h *IngestHandler) HandleSignal(w http.ResponseWriter, r *http.Request) {
-	ctx, span := tracer.Start(r.Context(), "Gateway-Ingress")
+	// ctx, span := tracer.Start(r.Context(), "Gateway-Ingress")
 	defer span.End()
 
 	var sig Signal
@@ -33,4 +33,8 @@ func (h *IngestHandler) HandleSignal(w http.ResponseWriter, r *http.Request) {
 
 	w.WriteHeader(http.StatusAccepted)
 	json.NewEncoder(w).Encode(map[string]string{"status": "queued", "id": span.SpanContext().TraceID().String()})
+}
+
+func (h *IngestHandler) dispatchToStream(data []byte) {
+	// Placeholder for internal routing logic
 }
