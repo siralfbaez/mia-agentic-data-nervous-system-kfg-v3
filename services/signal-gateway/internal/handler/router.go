@@ -4,9 +4,10 @@ import (
 	"context"
 	"encoding/json"
 	"net/http"
-	"go.opentelemetry.io/otel" // Added for tracing
+	"go.opentelemetry.io/otel"
 )
 
+// Define tracer ONCE for the whole package here
 var tracer = otel.Tracer("signal-gateway")
 
 type Signal struct {
@@ -15,7 +16,6 @@ type Signal struct {
 }
 
 func (h *IngestHandler) HandleSignal(w http.ResponseWriter, r *http.Request) {
-	// FIX 1: Uncomment and define ctx/span properly
 	ctx, span := tracer.Start(r.Context(), "Gateway-Ingress")
 	defer span.End()
 
@@ -30,10 +30,9 @@ func (h *IngestHandler) HandleSignal(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	// FIX 2: Convert struct to bytes before dispatching,
-	// and match the new function signature below
 	sigBytes, _ := json.Marshal(sig)
-	go h.dispatchToStream(context.Background(), sigBytes)
+	// Passing ctx to satisfy the 'unused' error and the receiver method
+	go h.dispatchToStream(ctx, sigBytes)
 
 	w.WriteHeader(http.StatusAccepted)
 	json.NewEncoder(w).Encode(map[string]string{
@@ -42,11 +41,8 @@ func (h *IngestHandler) HandleSignal(w http.ResponseWriter, r *http.Request) {
 	})
 }
 
-// FIX 3: Update signature to match how it's called (added context)
 func (h *IngestHandler) dispatchToStream(ctx context.Context, data []byte) {
 	_, span := tracer.Start(ctx, "Dispatch-To-KFG")
 	defer span.End()
-
-	// Placeholder for internal routing logic
 	_ = data
 }
