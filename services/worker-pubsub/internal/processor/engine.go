@@ -20,7 +20,7 @@ type SignalProcessor struct {
 
 // StartEngine is the entry point called by main.go
 func StartEngine(ctx context.Context) error {
-	processor := &SignalProcessor{}
+	// processor := &SignalProcessor{}
 
 	log.Println("Worker Engine: Subscribing to Pub/Sub stream...")
 
