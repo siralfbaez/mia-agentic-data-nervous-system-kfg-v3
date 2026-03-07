@@ -23,7 +23,7 @@ func main() {
 	defer shutdown(context.Background())
 
 	h := &handler.IngestHandler{
-		topic: "signals.raw.v3",
+		Topic: "signals.raw.v3",
 	}
 
 	server := &http.Server{
