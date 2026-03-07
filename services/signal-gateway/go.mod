@@ -5,7 +5,6 @@ go 1.25.5
 require (
 	github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability v0.0.0-20260306012717-c432e285122d
 	go.opentelemetry.io/otel v1.41.0
-	go.opentelemetry.io/otel/trace v1.41.0
 )
 
 replace github.com/siralfbaez/mia-agentic-data-nervous-system-kfg-v3/pkg/observability => ../../pkg/observability
@@ -33,6 +32,7 @@ require (
 	go.opentelemetry.io/otel/metric v1.41.0 // indirect
 	go.opentelemetry.io/otel/sdk v1.41.0 // indirect
 	go.opentelemetry.io/otel/sdk/metric v1.41.0 // indirect
+	go.opentelemetry.io/otel/trace v1.41.0 // indirect
 	go.opentelemetry.io/proto/otlp v1.9.0 // indirect
 	go.yaml.in/yaml/v2 v2.4.3 // indirect
 	golang.org/x/net v0.50.0 // indirect

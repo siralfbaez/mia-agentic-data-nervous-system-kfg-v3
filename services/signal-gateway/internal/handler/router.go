@@ -7,6 +7,20 @@ import (
 	"go.opentelemetry.io/otel"
 )
 
+// FIX: Define the struct so the methods have a "home"
+type IngestHandler struct {
+    PubSubClient interface{}
+    Topic        string
+}
+
+// Define tracer ONCE for the whole package
+var tracer = otel.Tracer("signal-gateway")
+
+type Signal struct {
+	Type    string          `json:"type"`
+	Payload json.RawMessage `json:"payload"`
+}
+
 // Define tracer ONCE for the whole package here
 var tracer = otel.Tracer("signal-gateway")
 
