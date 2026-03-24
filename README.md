@@ -1,6 +1,6 @@
 # MIA Agentic Data Nervous System (KFG-v3)
 
-A production-grade reference architecture for **Autonomous Agentic Workflows** powered by **Stream Processing** and **Knowledge Flow Graphs (KFG)**. This project demonstrates a unified approach to real-time data translation, SQL-like query optimization for event streams, and LLM-driven decision making.
+Production-grade reference architecture for **Autonomous Agentic Workflows** powered by **Stream Processing** and **Knowledge Flow Graphs (KFG)**. This project demonstrates a unified approach to real-time data translation, SQL-like query optimization for event streams, and LLM-driven decision making.
 
 
 --- 
